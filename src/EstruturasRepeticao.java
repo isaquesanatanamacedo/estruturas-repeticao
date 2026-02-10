@@ -4,39 +4,86 @@ public class EstruturasRepeticao {
 
     public static void main(String[] args){
 
-        System.out.println("se voce deseja ver o for cresente digite 1, se deseja ver o decresente digite 2...");
+      MenuIMC();
 
+    }
+
+
+
+    public static void MenuIMC(){
+
+        int DecisaoDoUsuario = 1;
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.println("Voce deseja calcular o IMC?\n1: SIM\n2: NÃO");
+
+
+            DecisaoDoUsuario = sc.nextInt();
+
+            if (DecisaoDoUsuario == 1) {
+                CalculoIMC();
+            }
+            else if (DecisaoDoUsuario != 2) {
+                DecisaoDoUsuario = 1;
+                System.out.println("Voce digitou uma opção invalida.\n\n");
+                continue;
+            }
+        } while (DecisaoDoUsuario == 1);
+        sc.close();
+    }
+
+
+
+
+    public static void CalculoIMC(){
+
+        System.out.println("Bem-vindo(a) ao calculo de IMC.\n\n");
         Scanner sc = new Scanner(System.in);
 
-        int decisao = sc.nextInt();
+        while (true){
 
-        if (decisao == 1){
-            forCresente();
-        } else if (decisao == 2){
-            forDecresente();
-        } else {
-            System.out.println("Decisão invalida");
+            System.out.println("A qualquer momento digite 0  ou um numero negativo para sair.\n\nDigite seu peso:");
+            double peso = sc.nextDouble();
+
+            if (peso <= 0){
+                break;
+            }
+
+            System.out.println("Digite sua altura:");
+            double altura = sc.nextDouble();
+
+            if (altura <= 0){
+                break;
+            }
+
+            double IMC = peso / (altura * altura);
+            System.out.println("Seu IMC é: " + IMC);
         }
-
+//        sc.close();
+        System.out.println("voce saiu.");
 
 
     }
 
-    public static void forCresente(){
+    public static void forCresente() {
 
         System.out.println("digite o numero maximo para ser contado de zero ate ele -1.");
 
-       Scanner sc = new Scanner(System.in);
-       int numeromaximo = sc.nextInt();
+        Scanner sc = new Scanner(System.in);
+        int numeromaximo = sc.nextInt();
 
-       sc.close();
+        sc.close();
 
-        System.out.println("FOR CRESENTE:\n");
-        for (int n1 = 0; n1 < numeromaximo; n1++){
-            System.out.println("O contador esta em: " + n1);
+        if (numeromaximo > 0) {
+            System.out.println("FOR CRESENTE:\n");
+            for (int n1 = 0; n1 < numeromaximo; n1++) {
+                System.out.println("O contador esta em: " + n1);
             }
             System.out.println();
+        } else {
+            System.out.println("Voce digitou um numero menor do que 1, NAO PODE");
         }
+    }
 
 
     public static void forDecresente(){
@@ -63,7 +110,8 @@ public class EstruturasRepeticao {
 }
 
 
-    }
+
+
 
 
 
